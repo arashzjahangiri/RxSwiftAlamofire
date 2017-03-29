@@ -34,14 +34,6 @@ class ViewController: UIViewController {
                 self.dateLabel.text = "fetching date ..."
                 self.animating()
             }).addDisposableTo(disposeBag)
-        
-        
-        
-        model.fetchDate()
-            .subscribe(onNext: {  [weak self] (element) in
-                self?.dateLabel.text = element
-            })
-            .addDisposableTo(disposeBag)
     }
     
     override func didReceiveMemoryWarning() {
