@@ -26,10 +26,18 @@ class ViewController: UIViewController {
             .debounce(0.03, scheduler: MainScheduler.instance)
             .subscribe(onNext: { [unowned self] in
                 self.model.fetchDate()
-                    .subscribe(onNext: {  [weak self] (dateString) in
-                        self?.dateLabel.text = dateString
-                        self?.stopAnimating()
-                    })
+                    .subscribe(
+                        onNext: {  [weak self] (dateString) in
+                            self?.dateLabel.text = dateString
+                            self?.stopAnimating()
+                        },
+                        onError: { [weak self] (err) in
+                            self?.dateLabel.text = err.localizedDescription
+                            self?.stopAnimating()
+                        },
+                        onCompleted: nil,
+                        onDisposed: nil
+                    )
                     .addDisposableTo(self.disposeBag)
                 self.dateLabel.text = "fetching date ..."
                 self.animating()
