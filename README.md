@@ -2,7 +2,7 @@
 Example to use RxSwift for connection and UI
 <br />
 ## Getting Started
-The application uses node.js as backend REST client which is running at http://localhost:3000.<br />
+The application uses node.js as backend REST for client, iOS app,  which is running at http://localhost:3000.<br />
 
 Make sure you have node.js and npm installed.
 
